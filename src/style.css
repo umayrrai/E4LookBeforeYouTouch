@@ -1,5 +1,42 @@
 /* Neon Warden: the HUD panels tilt toward the screen like an arcade cabinet. */
 
+:root {
+  /* colors */
+  --cyan: #5ef2ff;
+  --yellow: #ffe066;
+  --red: #ff4d6d;
+  --muted: #6f86a8;
+  --text: #e8fdff;
+  --panel-ink: #0e0a22;
+  --dark: #04020c;
+
+  /* more cyans */
+  --panel-edge: rgba(94, 242, 255, 0.35);
+  --panel-glow: rgba(94, 242, 255, 0.15);
+  --panel-inner: rgba(94, 242, 255, 0.08);
+  --screen-glow: rgba(94, 242, 255, 0.2);
+
+  /* translucent dark colors */
+  --panel-bg: rgba(14, 10, 34, 0.86);
+  --banner-bg: rgba(14, 10, 34, 0.9);
+  --caption-bg: rgba(4, 2, 12, 0.75);
+
+  /* glow shadow */
+  --glow: 0 0 6px currentColor, 0 0 18px currentColor;
+
+  /* fonts */
+  --font-display: Orbitron, "Trebuchet MS", sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* layout */
+  --panel-w: 190px;
+  --screen-w: 480px;
+  --tilt: 24deg;
+  --overlap: 18px;
+  --gap: 14px;
+  --radius: 10px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -9,7 +46,7 @@ body {
   min-height: 100vh;
   display: grid;
   place-content: center;
-  gap: 14px;
+  gap: var(--gap);
   background: radial-gradient(ellipse at 50% 30%, #1a0f3a, #04020c 70%);
   color: #e8fdff;
   font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
@@ -17,7 +54,7 @@ body {
 
 .cabinet {
   display: grid;
-  grid-template-columns: 190px 480px 190px;
+  grid-template-columns: var(--panel-w) var(--screen-w) var(--panel-w);
   align-items: center;
   perspective: 900px;
 }
@@ -26,13 +63,12 @@ body {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 14px;
-  padding: 14px;
+  gap: var(--gap);
+  padding: var(--gap);
   border: 1px solid rgba(94, 242, 255, 0.35);
-  border-radius: 10px;
-  background: rgba(14, 10, 34, 0.86);
-  box-shadow: 0 0 24px rgba(94, 242, 255, 0.15), inset 0 0 18px rgba(94, 242,
-    255, 0.08);
+  border-radius: var(--radius);
+  background: var(--panel-bg);
+  box-shadow: var(--glow), inset 0 0 18px var(--panel-inner);
   transition: opacity 400ms, transform 400ms;
 }
 
@@ -124,7 +160,7 @@ output {
 
 .screen {
   position: relative;
-  width: 480px;
+  width: var(--screen-w);
   height: 640px;
   border-radius: 10px;
   overflow: hidden;
