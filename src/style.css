@@ -123,11 +123,16 @@ output {
 }
 
 .pip {
+  width: 22px;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  background: currentColor;
   color: #ff5ea8;
 }
 
 .cell {
-  color: #ffe066;
+  flex: 1;
+  border-radius: 2px;
+  color: var(--yellow);
 }
 
 .pip.lit,
@@ -196,7 +201,10 @@ output {
 }
 
 .stop[data-state="cleared"] .stop-dot {
-  background: currentColor;
+  width: 12px;
+  height: 12px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
 }
 
 .stop[data-state="current"] {
